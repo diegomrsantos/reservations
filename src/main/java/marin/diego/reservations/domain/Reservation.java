@@ -28,7 +28,6 @@ public class Reservation implements Comparable<Reservation> {
 
     @Id
     @Column(name = "id", updatable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private User user;
@@ -57,6 +56,7 @@ public class Reservation implements Comparable<Reservation> {
     }
 
     public Reservation(User user, String arrival, String departure, boolean canceled, Clock clock) {
+        this.id = UUID.randomUUID();
         this.user = user;
 
         LocalDate arrivalLocalDate;
